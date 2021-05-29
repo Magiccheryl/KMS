@@ -1,3 +1,5 @@
+// back end for Start Page and Logged-in Homepage
+
 firebase.auth().onAuthStateChanged(async function(user) {
   if (user) {
     // Signed in
