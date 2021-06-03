@@ -1,1 +1,0 @@
-// Goal: Provide a function to like a course or a learning material
