@@ -1,19 +1,46 @@
-// front end for Start Page and Logged-in Homepage
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Final</title>
+  <title>Welcome to KMS!</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
 </head>
 
 <body>
-  <div class="sign-in-or-sign-out"></div>
- 
+  <div class="md:p-16 p-4 flex">
+    <img class="w-20 border-0 rounded-2xl" src="kms-logo.JPG">
+    <div class="w-32 my-auto text-center text-black font-bold border-2 border-black rounded"><a href="homepage.html">Homepage</a></div>
+    <div class="w-32 my-auto text-center text-black font-bold border-2 border-black rounded"><a href="course.html">Courses</a></div>
+    <div class="w-32 my-auto text-center text-black font-bold border-2 border-black rounded"><a href="write.html">Write</a></div>
+  </div>
+
+
+  <div class="md:flex md:space-x-4">
+    <div class="md:w-full my-auto">
+      <div class="space-y-4 md:p-16 p-4">
+        <img class="border-0 rounded-2xl" src="https://foundersguide.com/wp-content/uploads/2020/09/Untitled-design-2020-09-21T211920.158.jpg">
+      </div>
+    </div>
+
+    <div class="md:w-full space-y-4 md:p-16 p-4">
+      <h1 class="text-center text-3xl text-purple-700 font-bold">Knowledge Management System</h1>
+      <div class="text-center font-bold">
+        <p><span class="text-2xl text-purple-700 font-bold">K</span><span>eep Your Achievement;</span></p>
+        <p><span class="text-2xl text-purple-700 font-bold">M</span><span>anage Your Knowledge;</span> </p>
+        <p><span class="text-2xl text-purple-700 font-bold">S</span><span>upport Your Success!</span> </p>
+      </div>
+      <div class="my-auto sign-in-or-sign-out"></div>
+    </div>
+
+  </div>
+
+  <div class="md:p-16 p-4">
+    <p class="text-xs text-left">© 2021, KMS Development Team: Cheng Qian, Cheryl Hu, Sienna Kim</p>
+  </div>
+
   <!-- Put the Firebase config here -->
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
