@@ -1,2 +1,71 @@
 // front end for Write page
 // including subsections to write course takeaways, record learning materials and write comments.
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
+</head>
+
+
+<body>
+    <!-- Action buttons for choosing what you want to do -->
+    <div>
+        <button id="createCourse">Create Course</button>
+        <button id="createMaterials">Recording Learning Materials</button>
+        <button id="createComment">Create New Comment</button>
+        <button id="createTakeway">Create New Takeaway</button>
+    </div>
+   
+    <!-- The form for inputing contents. html will change when action button are clicked -->
+    
+    <div class="inputForm">
+    <!-- <form class="mt-4">
+        <input type="text" id="code" placeholder="Add a class code">
+        <input type="text" id="quarter" placeholder="Add quarter">
+        <input type="name" id="name" placeholder="Add course name">
+        <button id="submitButton">Submit</button>
+    </form> -->
+    </div>
+
+
+    <!-- Put the Firebase config here -->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+    <!-- FirebaseUI Auth -->
+    <!-- https://firebaseopensource.com/projects/firebase/firebaseui-web/ -->
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+        apiKey: "AIzaSyAIDcwA3BON_PQ8B21YrMrDYVqB7S_bfCc",
+        authDomain: "software-introduction.firebaseapp.com",
+        projectId: "software-introduction",
+        storageBucket: "software-introduction.appspot.com",
+        messagingSenderId: "384712603218",
+        appId: "1:384712603218:web:4a0461b66df194e98f518b"
+        } // replace
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="write.js"></script>
+
+</body>
+
+</html>
