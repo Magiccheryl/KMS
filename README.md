@@ -2,8 +2,6 @@
 
 ### KIEI-451 Spring 2021
 
-Begin by cloning this project and running `npm install`, then replace the Firebase configuration in both `/netlify/functions/firebase.js` and `index.html` with your own Firebase configuration object.
-
 1. About the project
 A utility tool for students to organize their learning materials, such as readings and cases, and to record key takeways and reflections, a tool that help managing the knowledge.
 
