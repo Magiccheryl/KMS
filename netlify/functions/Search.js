@@ -13,7 +13,7 @@ exports.handler = async function(event) {
   let db = firebase.firestore()
   let searchQuery =await db.collection(`materials`).get()
   let materials = searchQuery.docs
-
+  
   // create a blank array
   let returnValue = []
     
@@ -21,18 +21,21 @@ exports.handler = async function(event) {
   for (let i=0; i<materials.length; i++){
   
     // get reference to the material
-    material = materials[0]
+    let material = materials[i].data()
 
     // Check the category
     if (category == `title`) {
+        
         // search the key word in title of the learning material and add to the array if the key word is included
-        if (material.title.toUpperCase().include(keyWord)){
-          returnValue.push(material.id)
+        let searchTitle = material.title.toUpperCase()
+        if (searchTitle.includes(keyWord)){
+          returnValue.push(materials[i].id)
         }
       } else if (category == `summary`){
         // search the key word in summary of the learning material and add to the array if the key word is included
-        if (material.summary.toUpperCase().include(keyWord)){
-          returnValue.push(material.id)
+        let searchSummary = material.summary.toUpperCase()
+        if (searchSummary.includes(keyWord)){
+          returnValue.push(materials[i].id)
         }
       } else if (category == `comment`){
         // get connection to the comments collection
@@ -42,15 +45,15 @@ exports.handler = async function(event) {
         // search through comments to see if the key word is included
         for (let j=0; j<comment.length; j++){
           // check if the key word is included in the comments
-          if (comments[j].body.toUpperCase().include(keyWord)){
-            returnValue.push(material.id)
+          let comment = comments[j].data()
+          let searchComment = comment.body.toUpperCase()
+          if (searchComment.includes(keyWord)){
+            returnValue.push(materials[i].id)
           }
         }
       } 
   }
   
-
- 
    return {
     statusCode: 200,
     body: JSON.stringify(returnValue)
