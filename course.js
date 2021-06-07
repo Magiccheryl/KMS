@@ -4,20 +4,33 @@ firebase.auth().onAuthStateChanged(async function(user) {
         
         console.log(user)
 
+
+        // Build the URL for our posts API
+        let url = `/.netlify/functions/posts`
+
+        // Fetch the url, wait for a response, store the response in memory
+        let response = await fetch(url)
+
+        // Ask for the json-formatted data from the response, wait for the data, store it in memory
+        let json = await response.json()
+
+        // Write the json-formatted data to the console in Chrome
+        console.log(json)
+
         //get a reference to the create takeaways button
         let createtakeawayButton = document. querySelector ('.show-takeaway')
     
         //handle the sign out button click
-        createtakeawayButton.addEventListener(`click`, function(event) {
+        createtakeawayButton.addEventListener(`click`, async function(event) {
           //ignore the default behavior
           event.preventDefault()
           //get a reference to the newly created takeaway input
           let takeawayInput = document.querySelector(`#write-Takeaways`)
 
           //get the body of the takeaways
-          let takeawayBody = takeawayInput.nodeValue
+          let takeawayBody = takeawayInput.value
 
-          let url = `/.netlify/functions/write_takeaways?courseId=${courseId}`
+          let url = `/.netlify/functions/write_takeaways?body=${takeawayBody}&courseName=${courseName.displayName}`
 
           let response = fetch(url)
 
@@ -33,7 +46,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let response = await fetch(url)
       
         // Ask for the json-formatted data from the response, wait for the data, store it in memory
-        let json = await response.data()
+        let json = await response.json()
       
         // Write the json-formatted data to the console in Chrome
         console.log(json)

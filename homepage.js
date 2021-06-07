@@ -11,7 +11,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let response = await fetch(url)
     
       // Ask for the json-formatted data from the response, wait for the data, store it in memory
-      let json = await response.data()
+      let json = await response.json()
     
       // Write the json-formatted data to the console in Chrome
       console.log(json)
@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
       // get a refernce to the search button
 
-      // let searchButton = document.querySelector (`.get-course`)
+      let searchButton = document.querySelector (`.get-course`)
       
       // handle the clicking of the "search" button
       searchButton.addEventListner (`click`, async function(event){
@@ -35,44 +35,32 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let searchUrl = searchInput.value
 
         // create the URL for our "search post" lambda function
-        let url = `/.netlify/functions/posts?title=${searchUrl}&courseName=${serachUrl}`
+        let url = `/.netlify/functions/posts?attachment=${searchUrl}&courseName=${searchUrl}`
 
         // fetch the URL, wait for the response, store the    response in memory
-        let response = await fetch(url)
+        let response = fetch(url)
+
+        location.reload()
 
       
-       // instead of reload loop through with results using response 
-        for (let i=0; i < json.length; i++) {
-          // Store each object ("post") in memory
-          let post = json[i]
-          let courseTitle = post.name
-          courseDiv.insertAdjacentHTML(`beforeend`, `
-          <div class="md:mt-16 mt-8">
-          <div class="md:mx-0 mx-4 mt-8">
-            <span class="font-bold text-xl"> ${courseTitle}</span>
-          </div>
-          `)
         }
 
 
-    })
-
+    )
       
     
        //<course function>
 
         // Grab a reference to the element with class name "course" in memory
-        event.preventDefault()
-
+       
         let courseDiv = document.querySelector(`.courseName`)
         
-        let courseInput = couseDiv.value
-      
+       
         // Loop through the JSON data, for each Object representing a post:
         for (let i=0; i < json.length; i++) {
           // Store each object ("post") in memory
           let post = json[i]
-          let courseTitle = post.name
+          let courseTitle = posts.name
           courseDiv.insertAdjacentHTML(`beforeend`, `
             <div class="md:mt-16 mt-8">
             <div class="md:mx-0 mx-4 mt-8">
