@@ -71,13 +71,15 @@ firebase.auth().onAuthStateChanged(async function(user) {
       
       // <star function>
 
+
       // Get a reference to the "Star Course" button
       let starCourseButton = document.querySelector(`.star-course`)
 
       // Event listener for the "Star Course" button
-      changeImageButton.addEventListener(`click`, async function(event) {
+      starCourseButton.addEventListener(`click`, async function(event) {
+
         // Get a reference to the image
-        let image = document.querySelector(`img`)
+        let image = document.querySelector(`#starImage`)
       
         // Change the image
         image.setAttribute(`src`, `star-yellow.jpg`)
