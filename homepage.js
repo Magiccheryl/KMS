@@ -4,6 +4,20 @@ firebase.auth().onAuthStateChanged(async function(user) {
     if (user) {
       // Signed in
       console.log('signed in')
+
+      // Get a reference to the "Star Course" button
+      let starCourseButton = document.querySelector(`.star-course`)
+
+      // Event listener for the "Star Course" button
+      changeImageButton.addEventListener(`click`, async function(event) {
+        // Get a reference to the image
+        let image = document.querySelector(`img`)
+      
+        // Change the image
+        image.setAttribute(`src`, `star-yellow.jpg`)
+      })
+
+
     } else {
       // Signed out
       console.log('signed out')

@@ -1,1 +1,100 @@
-// front end for course page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Courses</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div>
+        <h1 class="md:text-xl text-base bg-black py-4 px-8">
+          <a class="mx-auto container">
+            <span class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-500">Knowledge Management System</span>
+          </a>
+        </h1>
+    </div>
+    
+      <div class="md:p-16 p-4 flex">
+        <img class="w-20 border-0 rounded-2xl" src="kms-logo.JPG">
+        <div class="w-32 my-auto text-center text-black font-bold border-2 border-black rounded"><a href="homepage.html">Homepage</a></div>
+        <div class="w-32 my-auto text-center text-black font-bold border-2 border-black rounded"><a href="course.html">Courses</a></div>
+        <div class="w-32 my-auto text-center text-black font-bold border-2 border-black rounded"><a href="write.html">Write</a></div>
+      </div>
+
+        <div>
+            <div class="md:text-left md:ml-16 ml-4">
+                <h1 class="text-2xl text-black font-bold">Course Takeaways</h1>
+                <p>Date: June 6, 2021</p>
+                <div class="w-1/3 my-8">
+                    <button class="bg-purple-800 text-sm text-white p-2 rounded" id="create-takeayaws">Create Takeaways</button>
+                </div>
+            </div>
+            
+        </div>
+
+    <!-- Learning Materials -->
+    <div class = "md:ml-16 mt-8 md:mr-16 bg-gray-100">
+        <h1 class="ml-4 text-base text-black font-bold">Learning Materials</h1>
+        
+        <div class="md:ml-16 mt-8 md:mr-16 mx-auto p-4 bg-white space-x-4 space-y-4">
+            <h1 class="font-bold">Case</h1>
+            <p>Summary: </p>
+            <p>Comments: </p>
+            <div class="w-1/3 my-8">
+                    <button class="bg-gray-300 text-sm text-black p-2 rounded" id="create-takeayaws">Create Comments</button>
+            </div>
+        </div>
+
+        <div class="md:ml-16 mt-8 md:mr-16 mx-auto p-4 bg-white space-x-4 space-y-4">
+            <h1 class="font-bold">Reading</h1>
+            <p>Summary: </p>
+
+            <div class="w-1/3 my-8">
+                    <button class="bg-gray-300 text-sm text-black p-2 rounded" id="create-takeayaws">Create Comments</button>
+            </div>
+   
+        </div>
+
+        <div class="md:ml-16 mt-8 md:mr-16 mx-auto p-4 bg-white space-x-4 space-y-4">
+            <h1 class="font-bold">Slides</h1>
+            <p>Summary: </p>
+            <div class="w-1/3 my-8">
+                <button class="bg-gray-300 text-sm text-black p-2 rounded" id="create-takeayaws">Create Comments</button>
+            </div>
+            </form>
+        </div>
+
+    </div>
+
+
+
+    <div class="md:p-16 p-4">
+      <p class="text-xs text-left">© 2021, KMS Development Team: Cheng Qian, Cheryl Hu, Sienna Kim</p>
+    </div>
+  
+    <!-- Put the Firebase config here -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
+  
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBAnrLs8YDQiEcUuMu-SuVwYpI5A2QKLbc",
+        authDomain: "kiei451-final-project.firebaseapp.com",
+        projectId: "kiei451-final-project",
+        storageBucket: "kiei451-final-project.appspot.com",
+        messagingSenderId: "1064640452521",
+        appId: "1:1064640452521:web:8257c6738bf78c693d16b8"
+      }
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="course.js"></script>
+
+</body>
+</html>
