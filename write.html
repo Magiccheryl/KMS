@@ -1,36 +1,83 @@
-// front end for Write page
-// including subsections to write course takeaways, record learning materials and write comments.
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Write</title>
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write New Comments & Takeaways</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
 </head>
 
 
 <body>
-    <!-- Action buttons for choosing what you want to do -->
     <div>
-        <button id="createCourse">Create Course</button>
-        <button id="createMaterials">Recording Learning Materials</button>
-       
+        <h1 class="md:text-xl text-base bg-black py-4 px-8">
+          <a class="mx-auto container">
+            <span class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-500">Knowledge Management System</span>
+          </a>
+        </h1>
     </div>
-   
-    <!-- The form for inputing contents. html will change when action button are clicked -->
+
+    <div class="md:p-16 p-4 flex">
+        <img class="w-20 border-0 rounded-2xl" src="kms-logo.JPG">
+        <div class="w-32 my-auto text-center text-black font-bold border-2 border-black rounded"><a href="homepage.html">Homepage</a></div>
+        <div class="w-32 my-auto text-center text-black font-bold border-2 border-black rounded"><a href="course.html">Courses</a></div>
+        <div class="w-32 my-auto text-center text-black font-bold border-2 border-black rounded"><a href="write.html">Write</a></div>
+    </div>
+
+    <div>
+        <div class="md:text-left md:ml-16 ml-4">
+            <h1 class="text-xl text-black font-bold">What do you want to do?</h1>
+            <div class="flex md:p-8 p-4">
+                <div class="w-1/3"><button class="bg-purple-800 text-sm text-white p-2 rounded" id="createCourse">Create Courses</button></div>
+                <div class="w-1/3"><button class="bg-purple-800 text-sm text-white p-2 rounded" id="createMaterials">Recording Learning Materials</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section for Recording Learning Materials -->
+    <div class = "md:ml-16 mt-8 md:mr-16 bg-gray-100">
+        <h1 class="ml-4 text-base text-black font-bold">Recording Learning Materials</h1>
+        <!-- The form for inputing contents. html will change when action button are clicked -->
+        <form action="button-submit.html" data-netlify="true">
+            <div class="md:ml-8">
+                <div class="flex">
+                    <div class="w-1/3">
+                        <label class="block mt-4 font-bold">Title</label>
+                        <input class="p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500" type="text" id="title" name="title">
+                    </div>
+                    <div class="w-1/3">
+                        <label class="block mt-4 font-bold">Time</label>
+                        <input class="p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500" type="text" id="time" name="time">
+                    </div>
+                </div>
+                </div class="md:ml-8">
+                    <label class="block mt-4 font-bold">Course</label>
+                    <input class="p-2 md:w-1/2 w-full border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500" type="text" id="course" name="course">
+                <div>
+                <div>
+                    <label class="block mt-4 font-bold">Summary</label>
+                    <textarea rows="6" class="p-2 w-full border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500
+                    focus:border-purple-500" id="summary" name="summary"></textarea>
+                </div>
+                <div>
+                    <label class="block mt-4 font-bold">Comments</label>
+                    <textarea rows="6" class="p-2 w-full border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500
+                    focus:border-purple-500" id="comments" name="comments"></textarea>
+                </div>
+                <div>
+                    <label class="block mt-4 font-bold">Attachment</label>
+                    <textarea rows="6" class="p-2 w-full border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500
+                    focus:border-purple-500" id="attachment" name="attachment"></textarea>
+                </div>
+                <button class="p-2 w-full bg-gray-300 text-sm text-black p-2 rounded" id="submitButton">Upload files or add a url</button>
+            </div>
+        </form>
+    </div>
     
-    <div class="inputForm">
-    <!-- <form class="mt-4">
-        <input type="text" id="code" placeholder="Add a class code">
-        <input type="text" id="quarter" placeholder="Add quarter">
-        <input type="name" id="name" placeholder="Add course name">
-        <button id="submitButton">Submit</button>
-    </form> -->
+    <div class="md:p-16 p-4">
+        <p class="text-xs text-left">© 2021, KMS Development Team: Cheng Qian, Cheryl Hu, Sienna Kim</p>
     </div>
 
 
