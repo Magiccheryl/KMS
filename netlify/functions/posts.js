@@ -1,10 +1,12 @@
-// Goal: Provide a function to return all materials and their comments from Firebase.
+// Goal: Provide a function to return all materials and their course from Firebase.
 
 // allows us to use firebase
 let firebase = require(`./firebase`)
 
 // /.netlify/functions/posts
 exports.handler = async function(event) {
+
+
   // define an empty Array to hold the return value from our lambda
   let returnValue = []
 
@@ -65,7 +67,7 @@ exports.handler = async function(event) {
       }
 
     // add the Object to the return value
-    returnValue.push(cousrseObject)
+    returnValue.push(courseObject)
   }
 
   
