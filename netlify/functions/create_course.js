@@ -20,7 +20,8 @@ exports.handler = async function(event) {
     quarter: quarter,
     name: name,
     userId: userId,
-    
+    // like is 1 if the course is liked by the user
+    like: 0
  })
   
   return {
