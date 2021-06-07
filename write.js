@@ -3,120 +3,192 @@
 
 firebase.auth().onAuthStateChanged(async function(user) {
     
-  // check to see if user is logged-in (i.e. user exists)
-  if (user) {
-
-    // write the user Object to the JavaScript console
-    console.log(user)
-
-    // Build the markup for the sign-out button and set the HTML in the header
-    document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
-      <button class="text-white underline sign-out">Sign Out</button>
-    `
-
-    // reference to and event listener for the creating courses button
-    let courseButton = document.querySelector(`#createCourse`)
-    courseButton.addEventListener(`click`,async function (event){
-
-        // creating courses
-        // display the form for inputing new course 
-        let form = document.querySelector(`.inputForm`)
-        form.innerHTML = ` 
-        <form class="mt-4">
-        <input type="text" id="code" placeholder="Add a class code">
-        <input type="text" id="quarter" placeholder="Add quarter">
-        <input type="name" id="name" placeholder="Add course name">
-        <button id="submitButton">Submit</button>
-        </form>`
+    if (user) {
+        // Signed in
+        console.log(user)
+        // Build the markup for the sign-out button and set the HTML in the header
+        document.querySelector(`.sign-in-or-sign-out`).innerHTML = `<button class ="text-pink-500 text-right underline sign-out"> Sign Out </button>`
         
-        // get the reference to the submit button
-        let submitButton = document.querySelector(`#submitButton`)
+        //get a reference to the sign out button
+        let signOutButton = document. querySelector ('.sign-out')
+        
+        //handle the sign out button click
+        signOutButton.addEventListener(`click`, function(event) {
+          //sign out of firebase authentication
+          firebase.auth().signOut()
+          //redirect to the home page
+          document.location.href = `index.html`
+           // Signed out
+          console.log('signed out')
+        })
 
-        // event listener for the submit button
-        submitButton.addEventListener(`click`,async function (event){
+        // reference to and event listener for the creating courses button
+        let courseButton = document.querySelector(`.createCourse`)
+        courseButton.addEventListener(`click`, async function (event){
 
-            // ignore the default behavior
+            // - Ignore the default behavior of the button
             event.preventDefault()
-            
-            // get a reference to the newly created course
-            let codeInput = document.querySelector(`#code`)
-            let quarterInput = document.querySelector(`#quarter`)
-            let nameInput = document.querySelector(`#name`)
-            
-            // get the content
-            let code = codeInput.value
-            let quarter = quarterInput.value
-            let name = nameInput.value
-            
-            console.log(code)
-            // Build the URL for our posts API
-            let url = `/.netlify/functions/create_course?code=${code}&quarter=${quarter}&name=${name}&userId=${user.uid}`
 
-            // Fetch the url, wait for a response, store the response in memory
-            let response = await fetch(url)
+            // creating courses
+
+            // display the form for inputing new course 
+            let form = document.querySelector(`.inputForm`)
+            form.innerHTML = `
+            <h1 class="ml-4 text-base text-black font-bold">Create Courses</h1>
+            <form action="button-submit.html" data-netlify="true">
+                    <div class="md:ml-8 md:mr-8">
+                        <div class="flex">
+                            <div class="w-1/3">
+                                <label class="block mt-4 font-bold">Add a class code</label>
+                                <input class="p-2 w-64 border border-gray-400 rounded focus:outline-none focus:ring-purple-500 focus:border-purple-500" type="text" id="code">
+                            </div>
+                            <div class="w-1/3">
+                                <label class="block mt-4 font-bold">Add quarter</label>
+                                <input class="p-2 w-64 border border-gray-400 rounded focus:outline-none focus:ring-purple-500 focus:border-purple-500" type="text" id="quarter">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block mt-4 font-bold">Add course name</label>
+                            <textarea rows="1" class="p-2 w-full border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500
+                            focus:border-purple-500" type="name" id="name"></textarea>
+                        </div>
+
+                        <button class="p-2 w-full bg-gray-300 text-sm text-black p-2 rounded" id="submitButton">Submit!</button>
+
+                    </div>
+                </form>`
+            
+            // get the reference to the submit button
+            let submitButton = document.querySelector(`#submitButton`)
+
+            // event listener for the submit button
+            submitButton.addEventListener(`click`,async function (event){
+
+                // ignore the default behavior
+                event.preventDefault()
+                
+                // get a reference to the newly created course
+                let codeInput = document.querySelector(`#code`)
+                let quarterInput = document.querySelector(`#quarter`)
+                let nameInput = document.querySelector(`#name`)
+                
+                // get the content
+                let code = codeInput.value
+                let quarter = quarterInput.value
+                let name = nameInput.value
+                
+                console.log(code)
+                // Build the URL for our posts API
+                let url = `/.netlify/functions/create_course?code=${code}&quarter=${quarter}&name=${name}&userId=${user.uid}`
+
+                // Fetch the url, wait for a response, store the response in memory
+                let response = await fetch(url)
         
         })
     })
 
-    // reference to and event listener for the create materials button
-    let materialButton = document.querySelector(`#createMaterials`)
-    materialButton.addEventListener(`click`,async function (event){
+        // reference to and event listener for the create materials button
+        let materialButton = document.querySelector(`.createMaterials`)
+        materialButton.addEventListener(`click`,async function (event){
 
-        // create learning materials
-        // display the form for inputing new material
-        let form = document.querySelector(`.inputForm`)
-        form.innerHTML = ` 
-        <form class="mt-4">
-        <input type="text" id="title" placeholder="Add a title">
-        <input type="text" id="courseName" placeholder="Add course name">
-        <input type="text" id="summary" placeholder="Add summary">
-        <input type="text" id="attachment" placeholder="Add attachment">
-        <button id="submitButton">Submit</button>
-        </form>`
-        
-        // get the reference to the submit button
-        let submitButton = document.querySelector(`#submitButton`)
+            // create learning materials
+            // display the form for inputing new material
+            let form = document.querySelector(`.inputForm2`)
+            form.innerHTML = `
+            <h1 class="ml-4 text-base text-black font-bold">Recording Learning Materials</h1>
+            <form action="button-submit.html" data-netlify="true">
+                    <div class="md:ml-8 md:mr-8">
+                        <div class="flex">
+                            <div class="w-1/3">
+                                <label class="block mt-4 font-bold">Title</label>
+                                <input class="p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500" type="text" id="title" name="title">
+                            </div>
+                            <div class="w-1/3">
+                                <label class="block mt-4 font-bold">Time</label>
+                                <input class="p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500" type="text" id="time" name="time">
+                            </div>
+                        </div>
 
-        // event listener for the submit button
-        submitButton.addEventListener(`click`,async function (event){
+                        <div>
+                            <label class="block mt-4 font-bold">Course</label>
+                            <textarea rows="1" class="p-2 w-full border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500
+                            focus:border-purple-500" id="summary" name="summary"></textarea>
+                        </div>
 
-            // ignore the default behavior
-            event.preventDefault()
+                        <div>
+                            <label class="block mt-4 font-bold">Summary</label>
+                            <textarea rows="6" class="p-2 w-full border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500
+                            focus:border-purple-500" id="summary" name="summary"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block mt-4 font-bold">Comments</label>
+                            <textarea rows="6" class="p-2 w-full border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500
+                            focus:border-purple-500" id="comments" name="comments"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block mt-4 font-bold">Attachment</label>
+                            <textarea rows="6" class="p-2 w-full border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500
+                            focus:border-purple-500" id="attachment" name="attachment"></textarea>
+                        </div>
+                        <button class="p-2 w-full bg-gray-300 text-sm text-black p-2 rounded" id="uploadButton">Upload files or add a url</button>
+                    </div>
+            </form>`
             
-            // get a reference to the newly created material
-            let titleInput = document.querySelector(`#title`)
-            let CoureNameInput = document.querySelector(`#courseName`)
-            let summaryInput= document.querySelector(`#summary`)
-            let attachmentInput= document.querySelector(`#attachment`)
-            
-                     
-            // get the content
-            let title = titleInput.value
-            let courseName = CoureNameInput.value
-            let summary = summaryInput.value
-            let attachment = attachmentInput.value
+            // get the reference to the submit button
+            let submitButton = document.querySelector(`#submitButton`)
 
-            
-            
-            // Connect the course name with the existing course Id
-            let idResponse = await fetch(`/.netlify/functions/courseidfinder?name=${courseName}`)
-            let courseId = await idResponse.json()
+            // event listener for the submit button
+            submitButton.addEventListener(`click`,async function (event){
 
-            // Build the URL for our posts API
-            let url = `/.netlify/functions/create_material?title=${title}&courseId=${courseId}&summary=${summary}&attachment=${attachment}&userId=${user.uid}&courseName=${courseName}`
-            console.log(url)
+                // ignore the default behavior
+                event.preventDefault()
+                
+                // get a reference to the newly created material
+                let titleInput = document.querySelector(`#title`)
+                let CoureNameInput = document.querySelector(`#courseName`)
+                let summaryInput= document.querySelector(`#summary`)
+                let attachmentInput= document.querySelector(`#attachment`)
+                
+                        
+                // get the content
+                let title = titleInput.value
+                let courseName = CoureNameInput.value
+                let summary = summaryInput.value
+                let attachment = attachmentInput.value
 
-            // Fetch the url, wait for a response, store the response in memory
-            let response = await fetch(url)
-        
-        })
+                
+                
+                // Connect the course name with the existing course Id
+                let idResponse = await fetch(`/.netlify/functions/courseidfinder?name=${courseName}`)
+                let courseId = await idResponse.json()
+
+                // Build the URL for our posts API
+                let url = `/.netlify/functions/create_material?title=${title}&courseId=${courseId}&summary=${summary}&attachment=${attachment}&userId=${user.uid}&courseName=${courseName}`
+                console.log(url)
+
+                // Fetch the url, wait for a response, store the response in memory
+                let response = await fetch(url)
+            
+            })
     })
-
-
-
 
     } else {
-        // if the user is not logge in, jump back to index page
-        window.location.href = "index.html"
-    }
+        //user is not logged-in so show login
+        console.log(`Not logged in!`)
+        // Initializes FirebaseUI Auth
+        let ui = new firebaseui.auth.AuthUI(firebase.auth())
+        // FirebaseUI configuration
+        let authUIConfig = {
+          signInOptions: [
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
+          ],
+          signInSuccessUrl: 'write.html'
+        }
+        // Starts FirebaseUI Auth
+        ui.start('.sign-in-or-sign-out', authUIConfig)
+      }
+
 })
