@@ -61,13 +61,24 @@ firebase.auth().onAuthStateChanged(async function(user) {
           // Store each object ("post") in memory
           let post = json[i]
           let courseTitle = posts.name
-          courseDiv.insertAdjacentHTML(`beforeend`, `
+          document.querySelector(`.courseName`).innerHTML = `
             <div class="md:mt-16 mt-8">
             <div class="md:mx-0 mx-4 mt-8">
               <span class="font-bold text-xl"> ${courseTitle}</span>
             </div>
-            `)}
-        
+            `}
+
+      //<link the course to course page
+      //Get a reference to the course button
+      let courseButton = document.querySelector(`.courseName-button`)
+
+      //event listener to the course button
+      courseButton.addEventListener (`click`, async function(event) {
+        //get a reference to course.html
+        document.location.href = course.html
+      })
+
+
       
       // <star function>
 
