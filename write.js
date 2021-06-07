@@ -6,6 +6,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
   // check to see if user is logged-in (i.e. user exists)
   if (user) {
 
+    // write the user Object to the JavaScript console
+    console.log(user)
+
+    // Build the markup for the sign-out button and set the HTML in the header
+    document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
+      <button class="text-white underline sign-out">Sign Out</button>
+    `
+
     // reference to and event listener for the creating courses button
     let courseButton = document.querySelector(`#createCourse`)
     courseButton.addEventListener(`click`,async function (event){
