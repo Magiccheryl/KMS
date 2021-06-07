@@ -23,7 +23,11 @@ exports.handler = async function(event) {
       courseId: courseId,
       userId: userId 
     })
-  
+   
+    // add 1 to numOfLikes
+    await db.collection('courses').doc(courseId).update({
+      like: 1
+    })
     
   } else {
     // delete the like
@@ -33,6 +37,11 @@ exports.handler = async function(event) {
     // delete the like in database
     await db.collection('likecourses').doc(likeId).delete()
     
+    // add 1 to numOfLikes
+    await db.collection('courses').doc(courseId).update({
+      like: 0
+    })
+
   }
 
  

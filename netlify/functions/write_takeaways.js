@@ -14,7 +14,8 @@ exports.handler = async function(event) {
 
     // get the course Name
     let courseQuery =await db.collection(`courses`).doc(courseId).get()
-    let courseName = courseQuery.name
+    let course = courseQuery.data()
+    let courseName = course.name
 
   // create a new course, wait for it to return
   await db.collection('takeaways').add({
