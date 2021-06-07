@@ -8,7 +8,6 @@ exports.handler = async function(event) {
   // get the querystring parameters and store in memory
   let title = event.queryStringParameters.title
   let courseId = event.queryStringParameters.courseId
-  let subject = event.queryStringParameters.subject
   let summary = event.queryStringParameters.summary
   let attachment = event.queryStringParameters.attachment
   let userId = event.queryStringParameters.userId
@@ -22,7 +21,6 @@ exports.handler = async function(event) {
     title: title,
     courseId: courseId,
     courseName: courseName,
-    subject: subject,
     summary: summary,
     attachment: attachment,
     userId: userId

@@ -61,7 +61,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
         <form class="mt-4">
         <input type="text" id="title" placeholder="Add a title">
         <input type="text" id="courseName" placeholder="Add course name">
-        <input type="text" id="subject" placeholder="Add subject">
         <input type="text" id="summary" placeholder="Add summary">
         <input type="text" id="attachment" placeholder="Add attachment">
         <button id="submitButton">Submit</button>
@@ -79,7 +78,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
             // get a reference to the newly created material
             let titleInput = document.querySelector(`#title`)
             let CoureNameInput = document.querySelector(`#courseName`)
-            let subjectInput = document.querySelector(`#subject`)
             let summaryInput= document.querySelector(`#summary`)
             let attachmentInput= document.querySelector(`#attachment`)
             
@@ -87,7 +85,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
             // get the content
             let title = titleInput.value
             let courseName = CoureNameInput.value
-            let subject = subjectInput.value
             let summary = summaryInput.value
             let attachment = attachmentInput.value
 
@@ -98,9 +95,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
             let courseId = await idResponse.json()
 
             // Build the URL for our posts API
-            let url = `/.netlify/functions/create_material?title=${title}&courseId=${courseId}&subject=${subject}&summary=${summary}&attachment=${attachment}&userId=${user.uid}&courseName=${courseName}`
+            let url = `/.netlify/functions/create_material?title=${title}&courseId=${courseId}&summary=${summary}&attachment=${attachment}&userId=${user.uid}&courseName=${courseName}`
             console.log(url)
-            
+
             // Fetch the url, wait for a response, store the response in memory
             let response = await fetch(url)
         
