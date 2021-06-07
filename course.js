@@ -1,20 +1,33 @@
 // back end for course page
 firebase.auth().onAuthStateChanged(async function(user) {
     if (user) {
-      
+        
+        console.log(user)
+
         //get a reference to the create takeaways button
-        let createtakeawayButton = document. querySelector ('.takeaways')
+        let createtakeawayButton = document. querySelector ('.show-takeaway')
     
         //handle the sign out button click
         createtakeawayButton.addEventListener(`click`, function(event) {
-        
-        //redirect to the write page
-        document.location.href = `write.html`
+          //ignore the default behavior
+          event.preventDefault()
+          //get a reference to the newly created takeaway input
+          let takeawayInput = document.querySelector(`#write-Takeaways`)
+
+          //get the body of the takeaways
+          let takeawayBody = takeawayInput.nodeValue
+
+          let url = `/.netlify/functions/write_takeaways?courseId=${courseId}`
+
+          let response = fetch(url)
+
+          location.reload()
+
         })
         
         
         // Build the URL for our material API
-        let url = `/.netlify/functions/create_material`
+        let url = `/.netlify/functions/posts`
       
         // Fetch the url, wait for a response, store the response in memory
         let response = await fetch(url)
@@ -35,7 +48,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
           takeawayDiv.insertAdjacentHTML(`beforeend`, `
             <div class="md:mt-16 mt-8">
             <div class="md:mx-0 mx-4 mt-8">
-              <span class="font-bold text-xl"> ${post.summary}</span>
+              <span class="font-bold text-xl"> ${postId}</span>
             </div>
             `)
         }
