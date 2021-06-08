@@ -33,7 +33,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
             // display the form for inputing new course 
             let form = document.querySelector(`.inputForm`)
-            form.innerHTML = `
+            form.insertAdjacentHTML(`beforeend`, `
             <h1 class="ml-4 text-base text-black font-bold">Create Courses</h1>
             <form action="button-submit.html" data-netlify="true">
                     <div class="md:ml-8 md:mr-8">
@@ -57,7 +57,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
                         <button class="p-2 w-full bg-gray-300 text-sm text-black p-2 rounded" id="submitButton">Submit!</button>
 
                     </div>
-                </form>`
+                </form>`)
             
             // get the reference to the submit button
             let submitButton = document.querySelector(`#submitButton`)
@@ -90,12 +90,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
         // reference to and event listener for the create materials button
         let materialButton = document.querySelector(`.createMaterials`)
+
         materialButton.addEventListener(`click`,async function (event){
 
             // create learning materials
             // display the form for inputing new material
-            let form = document.querySelector(`.inputForm2`)
-            form.innerHTML = `
+            let form2 = document.querySelector(`.inputForm2`)
+            
+            form2.insertAdjacentHTML(`beforeend`, `
             <h1 class="ml-4 text-base text-black font-bold">Recording Learning Materials</h1>
             <form action="button-submit.html" data-netlify="true">
                     <div class="md:ml-8 md:mr-8">
@@ -135,7 +137,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
                         </div>
                         <button class="p-2 w-full bg-gray-300 text-sm text-black p-2 rounded" id="uploadButton">Upload files or add a url</button>
                     </div>
-            </form>`
+            </form>`)
             
             // get the reference to the submit button
             let submitButton = document.querySelector(`#submitButton`)
