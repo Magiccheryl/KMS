@@ -10,3 +10,5 @@ The live Internet URL: https://romantic-poitras-3b5bcb.netlify.app
 
 3. Development Team
 Cheng Qian, Cheryl Hu, Sienna Kim
+
+P.S. We team had an ambitious objective of this "system", so we spent a lot effort on coding, even there are certain functions that do not fully work on the front end.
