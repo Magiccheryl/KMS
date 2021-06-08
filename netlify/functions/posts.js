@@ -56,7 +56,6 @@ exports.handler = async function(event) {
         attachment: materialData.attachment
 
       }
-
       //add the Object to the post
       courseObject.materials.push(materialsObject)
 

@@ -62,11 +62,12 @@ firebase.auth().onAuthStateChanged(async function(user) {
         for (let j=0; j < json.length; j++) {
           //get a reference to the material
             let material = json[j]
-            
             let materialDiv = document.querySelector(`.show-learningmaterial`)
             materialDiv.insertAdjacentHTML (`beforeend`, `
-            <h1 class="font-bold"> Case </h1>
-            <p >Summary: ${material.summary} </p>`)
+            <div class="md:ml-16 mt-8 md:mr-16 mx-auto p-4 bg-white space-x-4 space-y-4">
+            <div class="font-bold"> Course: ${material.name} </div>
+            <div> Quarter: ${material.quarter} </div>
+            <div> ${material.materials[0]} </div>`)
 
       
           }

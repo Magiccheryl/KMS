@@ -48,10 +48,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
             `)}
           else {`no results`}
 
-          }
-
-
-      
+          }    
         }
 
 
@@ -71,10 +68,16 @@ firebase.auth().onAuthStateChanged(async function(user) {
           let posts = json[i]
           let courseTitle = posts.name
           document.querySelector(`.courseName`).insertAdjacentHTML(`beforeend`,`
-            <div class="md:mt-16 mt-8">
-            <div class="md:mx-0 mx-4 mt-8">
-              <span class="font-bold text-xl"> ${courseTitle}</span>
+          
+          <div class="md:w-1/3 p-16">
+              <img class="border-0 rounded-2xl" src="https://s30383.pcdn.co/wp-content/uploads/2020/02/mos-course-design-PC18HA-4-10-18.jpg">
+             
+            <div class="font-bold text-xl"> ${courseTitle}</div>
+            <img class="w-8" src="star-gray.png" id="starImage">
+                <button class="star-course bg-gray-300 text-sm text-black p-2 rounded "> Star Course </button>
+
             </div>
+          </div>
             `)}
 
 
