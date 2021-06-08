@@ -4,8 +4,9 @@
 firebase.auth().onAuthStateChanged(async function(user) {
     
     if (user) {
-        // Signed in
+        // write the user Object to the JavaScript console
         console.log(user)
+
         let url = `/.netlify/functions/posts`
       
       // Fetch the url, wait for a response, store the response in memory
@@ -173,19 +174,22 @@ firebase.auth().onAuthStateChanged(async function(user) {
     })
 
     } else {
-        //user is not logged-in so show login
-        console.log(`Not logged in!`)
-        // Initializes FirebaseUI Auth
-        let ui = new firebaseui.auth.AuthUI(firebase.auth())
-        // FirebaseUI configuration
-        let authUIConfig = {
-          signInOptions: [
-            firebase.auth.EmailAuthProvider.PROVIDER_ID
-          ],
-          signInSuccessUrl: 'write.html'
-        }
-        // Starts FirebaseUI Auth
-        ui.start('.sign-in-or-sign-out', authUIConfig)
+        // Signed out
+      console.log('signed out')
+  
+      // Initializes FirebaseUI Auth
+      let ui = new firebaseui.auth.AuthUI(firebase.auth())
+  
+      // FirebaseUI configuration
+      let authUIConfig = {
+        signInOptions: [
+          firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        signInSuccessUrl: 'write.html'
       }
+  
+      // Starts FirebaseUI Auth
+      ui.start('.sign-in-or-sign-out', authUIConfig)
+    }
 
 })

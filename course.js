@@ -87,7 +87,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
             signInOptions: [
             firebase.auth.EmailAuthProvider.PROVIDER_ID
             ],
-            signInSuccessUrl: 'homepage.html'
+            signInSuccessUrl: 'course.html'
             }
     
             // Starts FirebaseUI Auth
