@@ -29,18 +29,27 @@ firebase.auth().onAuthStateChanged(async function(user) {
         event.preventDefault()
         
          // get a reference to the input holding the image URL
-        let searchInput = document.querySelector(`.courseName`)
+        let searchInput = document.querySelector(`#keywords`)
 
         // store the user-inputted image URL in memory
         let searchUrl = searchInput.value
 
-        // create the URL for our "search post" lambda function
-        let url = `/.netlify/functions/posts?attachment=${searchUrl}&courseName=${searchUrl}`
+        // loop through the Json data, for each Object representing apost: 
+        for (let i=0; i < json.length; i++) {
+          // Store each object ("post") in memory
+          let posts = json[i]
+          let courseTitle = posts.name
+          if (searchUrl = courseTitle) { 
+          document.querySelector(`.courseName`).insertAdjacentHTML = (`beforeend`,`
+            <div class="md:mt-16 mt-8">
+            <div class="md:mx-0 mx-4 mt-8">
+              <span class="font-bold text-xl"> ${courseTitle}</span>
+            </div>
+            `)}
+          else {`no results`}
 
-        // fetch the URL, wait for the response, store the    response in memory
-        let response = fetch(url)
+          }
 
-        location.reload()
 
       
         }
@@ -59,14 +68,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
         // Loop through the JSON data, for each Object representing a post:
         for (let i=0; i < json.length; i++) {
           // Store each object ("post") in memory
-          let post = json[i]
+          let posts = json[i]
           let courseTitle = posts.name
-          document.querySelector(`.courseName`).innerHTML = `
+          document.querySelector(`.courseName`).insertAdjacentHTML = (`beforeend`,`
             <div class="md:mt-16 mt-8">
             <div class="md:mx-0 mx-4 mt-8">
               <span class="font-bold text-xl"> ${courseTitle}</span>
             </div>
-            `}
+            `)}
 
       //<link the course to course page
       //Get a reference to the course button
