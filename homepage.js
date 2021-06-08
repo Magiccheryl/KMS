@@ -72,7 +72,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
               <img class="border-0 rounded-2xl" src="https://s30383.pcdn.co/wp-content/uploads/2020/02/mos-course-design-PC18HA-4-10-18.jpg">
              
             <div class="font-bold text-xl"> ${courseTitle}</div>
-            <img class="w-8" src="star-gray.png" id="starImage">
+            <img id="starImage" class="w-8" src="star-gray.png">
                 <button class="star-course bg-gray-300 text-sm text-black p-2 rounded "> Star Course </button>
 
             </div>
