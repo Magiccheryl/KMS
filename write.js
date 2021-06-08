@@ -5,22 +5,22 @@ firebase.auth().onAuthStateChanged(async function(user) {
     
     if (user) {
         // Signed in
-        console.log(user)
-        // Build the markup for the sign-out button and set the HTML in the header
-        document.querySelector(`.sign-in-or-sign-out`).innerHTML = `<button class ="text-pink-500 text-right underline sign-out"> Sign Out </button>`
+        // console.log(user)
+        // // Build the markup for the sign-out button and set the HTML in the header
+        // document.querySelector(`.sign-in-or-sign-out`).innerHTML = `<button class ="text-pink-500 text-right underline sign-out"> Sign Out </button>`
         
-        //get a reference to the sign out button
-        let signOutButton = document. querySelector ('.sign-out')
+        // //get a reference to the sign out button
+        // let signOutButton = document. querySelector ('.sign-out')
         
-        //handle the sign out button click
-        signOutButton.addEventListener(`click`, function(event) {
-          //sign out of firebase authentication
-          firebase.auth().signOut()
-          //redirect to the home page
-          document.location.href = `index.html`
-           // Signed out
-          console.log('signed out')
-        })
+        // //handle the sign out button click
+        // signOutButton.addEventListener(`click`, function(event) {
+        //   //sign out of firebase authentication
+        //   firebase.auth().signOut()
+        //   //redirect to the home page
+        //   document.location.href = `index.html`
+        //    // Signed out
+        //   console.log('signed out')
+        // })
 
         // reference to and event listener for the creating courses button
         let courseButton = document.querySelector(`.createCourse`)
