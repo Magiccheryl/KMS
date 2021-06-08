@@ -16,11 +16,26 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
         // Write the json-formatted data to the console in Chrome
         console.log(json)
+        
+        let courseId = ""
 
-
+        // Loop through the JSON data, for each Object representing a post:
+        for (let i=0; i < json.length; i++) {
+          // Store each object ("post") in memory
+          let courseObject = json[i]
+          let takeawayDiv = document.querySelector(`.show-takeaway`) 
+          takeawayDiv.insertAdjacentHTML(`beforeend`, `
+            <div class="md:mt-16 mt-8">
+            <div class="md:mx-0 mx-4 mt-8">
+              <span class="font-bold text-xl"> ${courseObject.takeaways}</span>
+            </div>
+            `)
+            courseId = courseObject.id
+            
+        }
 
         //get a reference to the create takeaways button
-        let createtakeawayButton = document. querySelector (`.takeaways`)
+        let createtakeawayButton = document. querySelector(`.takeaways`)
     
         //handle the sign out button click
         createtakeawayButton.addEventListener(`click`, async function(event) {
@@ -33,33 +48,19 @@ firebase.auth().onAuthStateChanged(async function(user) {
           let takeawayBody = takeawayInput.value
 
           //create the URL for our "create takeaway post" lambda function
-          let url = `/.netlify/functions/write_takeaways?body=${takeawayBody}&courseId=${courseId.displayName}&userId=${userId.displayName}`
+          let url = `/.netlify/functions/write_takeaways?body=${takeawayBody}&courseId=${courseId}&userId=${user.uid}`
 
           let response = await fetch(url)
 
-          location.reload()
+          // location.reload()
 
         })
         
-        
-
-        // Loop through the JSON data, for each Object representing a post:
-        for (let i=0; i < json.length; i++) {
-          // Store each object ("post") in memory
-          let post = json[i]
-          let takeawayDiv = document.querySelector(`.show-takeaway`) 
-          takeawayDiv.insertAdjacentHTML(`beforeend`, `
-            <div class="md:mt-16 mt-8">
-            <div class="md:mx-0 mx-4 mt-8">
-              <span class="font-bold text-xl"> ${courseObject.takeaways.body}</span>
-            </div>
-            `)
-        }
- 
+         
         
           // Loop through the post's comments
         for (let j=0; j < json.length; j++) {
-          
+          //get a reference to the material
             let material = json[j]
             
             let materialDiv = document.querySelector(`.show-learningmaterial`)

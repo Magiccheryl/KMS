@@ -81,7 +81,7 @@ exports.handler = async function(event) {
       // create an Object to be added to the takeaway Array of the post
       let takeawaysObject = {
         id: takeawayId,
-        body: takeawaytData.body
+        body: takeawayData.body
       
       }
 
