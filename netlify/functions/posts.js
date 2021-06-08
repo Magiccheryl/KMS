@@ -15,10 +15,11 @@ exports.handler = async function(event) {
 
   // perform a query against firestore for all posts, wait for it to return, store in memory
   let postsQuery = await db.collection(`courses`).get()
-
+ 
   // retrieve the documents from the query
   let posts = postsQuery.docs
 
+  console.log(posts)
   // loop through the post documents
   for (let postIndex=0; postIndex < posts.length; postIndex++) {
     // get the id from the document
@@ -34,7 +35,6 @@ exports.handler = async function(event) {
       code: postData.code,
       name: postData.name,
       quarter: postData.quarter,
-      attachment: materialAttachment,
       materials: [],
       takeaways: []      
     }
@@ -65,8 +65,6 @@ exports.handler = async function(event) {
     //add the Object tothe retrun value
     returnValue.push(courseObject)
 
-    
-    let materialAttachment = materialQuery.attachment
 
 
     let takeawaysQuery = await db.collection(`takeaways`).where(`courseId`, `==`, postId).get()
@@ -75,7 +73,7 @@ exports.handler = async function(event) {
 
     for (let takeawaysIndex=0; takeawaysIndex < takeaways.length; takeawaysIndex++) {
       // get the id from the takeaway document
-      let takeawayId = takeaways[takeawaysIndex].userId
+      let takeawayId = takeaways[takeawaysIndex].id
 
       // get the data from the takeaway document
       let takeawayData = takeaways[takeawaysIndex].data()

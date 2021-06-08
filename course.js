@@ -17,8 +17,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
         // Write the json-formatted data to the console in Chrome
         console.log(json)
 
+
+
         //get a reference to the create takeaways button
-        let createtakeawayButton = document. querySelector ('.show-takeaway')
+        let createtakeawayButton = document. querySelector (`.takeaways`)
     
         //handle the sign out button click
         createtakeawayButton.addEventListener(`click`, async function(event) {
@@ -30,16 +32,15 @@ firebase.auth().onAuthStateChanged(async function(user) {
           //get the body of the takeaways
           let takeawayBody = takeawayInput.value
 
-          let url = `/.netlify/functions/write_takeaways?body=${takeawayBody}&courseName=${courseName.displayName}`
+          //create the URL for our "create takeaway post" lambda function
+          let url = `/.netlify/functions/write_takeaways?body=${takeawayBody}&courseId=${courseId.displayName}&userId=${userId.displayName}`
 
-          let response = fetch(url)
+          let response = await fetch(url)
 
           location.reload()
 
         })
         
-        
-        // Grab a reference to the element with class name "material" in memory
         
 
         // Loop through the JSON data, for each Object representing a post:
@@ -50,7 +51,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
           takeawayDiv.insertAdjacentHTML(`beforeend`, `
             <div class="md:mt-16 mt-8">
             <div class="md:mx-0 mx-4 mt-8">
-              <span class="font-bold text-xl"> ${postId}</span>
+              <span class="font-bold text-xl"> ${courseObject.takeaways.body}</span>
             </div>
             `)
         }
